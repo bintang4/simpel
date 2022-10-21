@@ -70,7 +70,7 @@ def main(url):
 		     se.close()
 		   else:
 		    get_soe = requests.get(url+"/marijuana.php",headers=headers, timeout=3, verify=False, allow_redirects=False).text
-		    if "<title>MARIJUANA</title>" in get_source or "0x5a455553.github.io/MARIJUANA/icon.png" in get_soe:
+		    if "<title>MARIJUANA</title>" in get_soe or "0x5a455553.github.io/MARIJUANA/icon.png" in get_soe:
 		     print '[OK!]' + url+'/marijuana.php'
 		     se = open('content.txt', 'a')
 		     se.write(url+'/marijuana.php\n')
