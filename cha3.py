@@ -76,9 +76,8 @@ def main(url):
 		     se.write(url+'/marijuana.php\n')
 		     se.close()
 		    else:
-		       
 		       get_soe = requests.get(url+"/shell.php",headers=headers, timeout=3, verify=False, allow_redirects=False).text
-		       if "Mini Shell" in get_s or "Mini Uploader" in get_soe:
+		       if "Mini Shell" in get_soe or "Mini Uploader" in get_soe:
 		        print '[OK!]' + url+'/shell.php'
 		        se = open('content.txt', 'a') 
 		        se.write(url+'/shell.php\n') 
