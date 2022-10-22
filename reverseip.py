@@ -149,35 +149,3 @@ def Main():
 
 if __name__ == '__main__':
     Main()
-    
-    
-    
-    
-    p(0.5)
-    
-        elif heyyo == '3':
-            awww = input('\n[+] {}Website List{} > {}'.format(g, o, g))
-            thrd = input('{}[+] {}Thread{} > '.format(o, g, o))
-            print('')
-            try:
-                listmu = open(awww, 'r').read().splitlines()
-                with ThreadPoolExecutor(max_workers=int(thrd)) as e:
-                    [e.submit(RevSub1, i) for i in listmu]
-            except:
-                print('[!] {}Incorrect'.format(r))
-                time.sleep(0.5)
-    
-        elif heyyo == '99':
-            print('\n[+] {}Thanks For Download My Tool'.format(g))
-            time.sleep(0.5)
-            sys.exit()
-
-        else:
-            print('{}\n[!] {}Incorrect{},{} Please Choose Number {}1 - 3,{} and Number {}99{} For {}Exit'.format(o, g, o, g, o, g, o, g, r))
-            time.sleep(0.5)
-    
-    except KeyboardInterrupt:
-        print('{}\n\n[!] {}CTRL {}+{} C'.format(o, r, o, r))
-        time.sleep(0.5)
-
-if __name_
