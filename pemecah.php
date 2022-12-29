@@ -26,7 +26,7 @@ $chunk = array_chunk($explode, $divide);
 
 for($i=0;$i<count($chunk);$i++) {
     echo "Processing no ".($i+1)." \n"; 
-    $f = fopen('/Result/'.($i+1).'.txt', "a+");
+    $f = fopen('result/'.($i+1).'.txt', "a+");
 
     for($j=0;$j<count($chunk[$i]);$j++) {
         fwrite($f, $chunk[$i][$j]."\n");
