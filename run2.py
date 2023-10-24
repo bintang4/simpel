@@ -45,6 +45,8 @@ try:
 except:
     path = [
         '/.env',
+        '/.env.backup',
+        
         '/conf/.env',
         '/wp-content/.env',
         '/wp-admin/.env',
