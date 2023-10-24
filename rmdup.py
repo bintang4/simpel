@@ -10,7 +10,7 @@ How   : With Sublime Text Editor and linux
 """
 
 import timeit
-import os
+import os,sys
 
 overwriteMode = True
 
@@ -45,7 +45,7 @@ def main(filename):
     print("[+] Original File Size : %s" % Convsize(filename))
 
     start_time = timeit.default_timer()
-    content = [i.replace('\n', '') for i in open(filename, encoding="utf-8", errors="ignore").readlines()]
+    content = [i.replace('\n', '') for i in open(filename).readlines()]
     # generates a list with the words inside wordlist without '\n'
     org_len = len(content)
 
@@ -78,8 +78,12 @@ def main(filename):
 
 
 if __name__ == "__main__":
-    import sys
     if len(sys.argv) < 2:
-        print("removeduplicate.py wordlist.txt")
+        filename = raw_input("Filename > ")
+        main(filename)
     else:
         main(sys.argv[1])
+        
+        
+        
+        
