@@ -39,7 +39,7 @@ def main(url):
  if url.endswith('/'):
 	  url = url[:-1]
  try:
-		r = requests.get(url)
+		r = requests.get(url, timeout=10)
 		print(r.url)
 		simpan = open('urlnew.txt', 'a')
 		simpan.write(r.url+'\n')
