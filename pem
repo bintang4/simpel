@@ -3,7 +3,7 @@ import math
 
 # Create 'result' directory if it doesn't exist
 if not os.path.exists('result'):
-    os.makedirs('result', 0777)
+    os.makedirs('result', 0o777)
 
 # Get input for the list file and divide number
 list_file = input("list: ").strip()
