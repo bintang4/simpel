@@ -1,4 +1,4 @@
-import os
+import os, requests
 
 try:
 	os.mkdir('Result')
@@ -18,8 +18,10 @@ def scan(site):
         c = 0
         while c <= 249:
             c += 1
-            print "Ranging ==>" + str(taz) + str(c) + '.' + str(i)
-            open('Result/Ranged.txt', 'a').write(str(taz) + str(c) + '.' + str(i) + '\n')
+            rangingg = str(taz) + str(c) + '.' + str(i)
+	    r = requests.get("http://" + rangingg, timeout=5)
+	    print "Ranging ==>" + 
+            open('Result/Ranged.txt', 'a').write(r.url + '\n')
 
 
 nam = raw_input('List Ips  :')
