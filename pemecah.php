@@ -1,7 +1,8 @@
 <?php
 
-if (!file_exists('result')) {
-    mkdir('result', 0777, true);
+echo "dir: "; $dirr = rtrim(fgets(STDIN));
+if (!file_exists($dirr)) {
+    mkdir($dirr, 0777, true);
 }
 
 echo "list : "; $list = rtrim(fgets(STDIN));
@@ -26,11 +27,11 @@ $chunk = array_chunk($explode, $divide);
 
 for($i=0;$i<count($chunk);$i++) {
     echo "Processing no ".($i+1)." \n"; 
-    $f = fopen('result/'.($i+1).'.txt', "a+");
+    $f = fopen($dirr.'/'.($i+1).'.txt', "a+");
 
     for($j=0;$j<count($chunk[$i]);$j++) {
         fwrite($f, $chunk[$i][$j]."\n");
     }
     fclose($f);
 }
-echo "Result saved into 'result' folder\n";
+echo "Result saved into '$dirr' folder\n";
